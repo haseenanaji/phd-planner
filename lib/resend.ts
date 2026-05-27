@@ -1,8 +1,9 @@
 import { Resend } from 'resend'
 
-export const resend = new Resend(process.env.RESEND_API_KEY)
+const getResend = () => new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
 
 export async function sendWelcomeEmail(email: string, name: string) {
+  const resend = getResend()
   return resend.emails.send({
     from: 'PhDPlanner <hello@phdplanner.app>',
     to: email,
@@ -45,6 +46,7 @@ export async function sendDeadlineReminderEmail(
   name: string,
   deadlines: { title: string; deadline_date: string; type: string | null }[]
 ) {
+  const resend = getResend()
   const deadlineList = deadlines.map(d => {
     const days = Math.ceil((new Date(d.deadline_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24))
     return `
