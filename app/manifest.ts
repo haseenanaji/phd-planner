@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
+    id: '/',
     name: 'PhD Planner — Research Hub',
     short_name: 'PhDPlanner',
     description: 'The all-in-one planner for PhD researchers. Track papers, experiments, deadlines, and more.',
@@ -11,6 +12,8 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#f59e0b',
     orientation: 'portrait',
     scope: '/',
+    lang: 'en',
+    dir: 'ltr',
     icons: [
       {
         src: '/icons/icon-192.png',
@@ -26,14 +29,5 @@ export default function manifest(): MetadataRoute.Manifest {
       },
     ],
     categories: ['education', 'productivity'],
-    screenshots: [
-      {
-        src: '/icons/screenshot-wide.png',
-        sizes: '1280x720',
-        type: 'image/png',
-        // @ts-ignore
-        form_factor: 'wide',
-      },
-    ],
   }
 }
